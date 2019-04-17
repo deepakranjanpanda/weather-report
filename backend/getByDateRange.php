@@ -1,5 +1,4 @@
 <?php
-
 $MyUsername = "root";
 $MyPassword = "root";
 $MyHostname = "localhost";
@@ -7,7 +6,9 @@ $MyHostname = "localhost";
 $dbc = mysqli_connect($MyHostname, $MyUsername, $MyPassword, 'datalog')
 or die('Error connecting to the database');
 
-$query = 'select * from weather_data order by id';
+$range =$_GET['range'];
+
+$query = "SELECT * FROM `weather_data` where date >=( CURDATE() - INTERVAL $range DAY )";
 
 $result = mysqli_query($dbc, $query)
 or die('Error querying the data');

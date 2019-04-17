@@ -3,11 +3,14 @@
 $MyUsername = "root";
 $MyPassword = "root";
 $MyHostname = "localhost";
+$selectedId = $_GET['id'];
+if (!is_numeric($selectedId))
+    throw new Exception("Preventing SQL Injection");
 
 $dbc = mysqli_connect($MyHostname, $MyUsername, $MyPassword, 'datalog')
 or die('Error connecting to the database');
 
-$query = 'select * from weather_data order by id';
+$query = 'select * from weather_data where id = '.$selectedId;
 
 $result = mysqli_query($dbc, $query)
 or die('Error querying the data');
