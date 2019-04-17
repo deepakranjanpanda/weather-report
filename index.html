@@ -37,7 +37,7 @@
         <hr class="my-4">
         <p>All the data are provided from a raspberry pi which is connected to a sense hat module</p>
         <p class="lead">
-            <a class="btn btn-primary btn-lg" href="architecture.html" role="button">Learn more</a>
+            <a class="btn btn-primary btn-lg" href="architecture.html" role="button">View last sensor data</a>
         </p>
     </div>
 
@@ -91,7 +91,8 @@
                     <li>Pressure</li>
                     <li>Humidity</li>
                 </ul>
-                <button type="button" class="btn btn-lg btn-block btn-primary">click here to search</button>
+                <button type="button" class="btn btn-lg btn-block btn-primary"
+				onclick="window.open('backend/getByDateRange.php', '_self')">click here to search</button>
             </div>
         </div>
     </div>
