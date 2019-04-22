@@ -1,13 +1,11 @@
 <?php
+include 'connection_details.php';
 
-$MyUsername = "root";
-$MyPassword = "root";
-$MyHostname = "localhost";
 $selectedId = $_GET['id'];
 if (!is_numeric($selectedId))
-    throw new Exception("Preventing SQL Injection");
+throw new Exception("Preventing SQL Injection");
 
-$dbc = mysqli_connect($MyHostname, $MyUsername, $MyPassword, 'datalog')
+$dbc = mysqli_connect($MyHostname, $MyUsername, $MyPassword, $MyDatabaseName)
 or die('Error connecting to the database');
 
 $query = 'select * from weather_data where id = '.$selectedId;

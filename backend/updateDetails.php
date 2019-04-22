@@ -1,15 +1,12 @@
 <?php
-
-$MyUsername = "root";
-$MyPassword = "root";
-$MyHostname = "localhost";
+include 'connection_details.php';
 
 $id = $_POST['id'];
 $temp = $_POST['temp'];
 $pressure = $_POST['pres'];
 $humidity =  $_POST['hum'];
 
-$dbc = mysqli_connect($MyHostname, $MyUsername, $MyPassword, 'datalog1')
+$dbc = mysqli_connect($MyHostname, $MyUsername, $MyPassword, $MyDatabaseName)
 or die('Error connecting to the database');
 
 $query = "UPDATE `weather_data` SET `temperature` = '$temp', `humidity` = '$humidity', `pressure` = '$pressure' WHERE `weather_data`.`id` = $id";

@@ -1,10 +1,7 @@
 <?php
+include 'connection_details.php';
 
-$MyUsername = "root";
-$MyPassword = "root";
-$MyHostname = "localhost";
-
-$dbc = mysqli_connect($MyHostname, $MyUsername, $MyPassword, 'datalog')
+$dbc = mysqli_connect($MyHostname, $MyUsername, $MyPassword, $MyDatabaseName)
 or die('Error connecting to the database');
 
 $query = 'select ID from weather_data order by id';

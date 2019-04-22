@@ -1,9 +1,7 @@
 <?php
-$MyUsername = "root";
-$MyPassword = "root";
-$MyHostname = "localhost";
+include 'connection_details.php';
 
-$dbc = mysqli_connect($MyHostname, $MyUsername, $MyPassword, 'datalog')
+$dbc = mysqli_connect($MyHostname, $MyUsername, $MyPassword, $MyDatabaseName)
 or die('Error connecting to the database');
 
 $range =$_GET['range'];
