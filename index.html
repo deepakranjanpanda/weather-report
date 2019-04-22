@@ -5,15 +5,30 @@
     <title>Weather Report</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
+    <style>
+        .each-card {
+            height: 100%;
+        }
+
+        .remove-background {
+            background-color: inherit;
+        }
+
+        .remove-boarder-top {
+            border-top : none;
+        }
+    </style>
 </head>
 <body>
 <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="index.html">Weather-Report<span class="sr-only">(current)</span></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -31,7 +46,7 @@
         </div>
     </nav>
 
-    <div class="jumbotron">
+    <div class="jumbotron col-sm-12">
         <h1 class="display-4">CUTM WEATHER REPORT</h1>
         <p class="lead"></p>
         <hr class="my-4">
@@ -41,58 +56,71 @@
         </p>
     </div>
 
-    <div class="card-deck mb-3 text-center">
-        <div class="card mb-4 box-shadow">
-            <div class="card-header">
-                <h4 class="my-0 font-weight-normal">Add data</h4>
-            </div>
-            <div class="card-body">
-                <h1 class="card-title pricing-card-title">
-                    <small class="text-muted"> You can add</small>
-                </h1>
-                <ul class="list-unstyled mt-3 mb-4">
-                    <li>Temprature</li>
-                    <li>Pressure</li>
-                    <li>Humidity</li>
-                </ul>
-                <button type="button" class="btn btn-lg btn-block btn-primary"
-                        onclick="window.open('edit.html', '_self')">Click here to add
-                </button>
-            </div>
-        </div>
-        <div class="card mb-4 box-shadow">
-            <div class="card-header">
-                <h4 class="my-0 font-weight-normal">View the entire data</h4>
-            </div>
-            <div class="card-body">
-                <h1 class="card-title pricing-card-title">
-                    <small class="text-muted">view the whole data</small>
-                </h1>
-                <ul class="list-unstyled mt-3 mb-4">
-                    <li>Temperature</li>
-                    <li>Pressure</li>
-                    <li>Humidity</li>
-                </ul>
-                <button type="button" class="btn btn-lg btn-block btn-primary"
-                        onclick="window.open('view_data.html', '_self')">Click here to view data
-                </button>
+    <div class="row all-cards">
+        <div class="mb-3 text-center col-sm-12 col-lg-4">
+            <div class="card mb-4 box-shadow each-card">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">Add data</h4>
+                </div>
+                <div class="card-body text-left">
+                    <h1 class="card-title pricing-card-title">
+                        <small class="text-muted"> You can add</small>
+                    </h1>
+                    <ul class="list-unstyled mt-3 mb-4">
+                        <li>Temprature</li>
+                        <li>Pressure</li>
+                        <li>Humidity</li>
+                    </ul>
+                </div>
+                <div class="card-footer remove-background remove-boarder-top">
+                    <button type="button" class="btn btn-lg btn-block btn-primary"
+                            onclick="window.open('edit.html', '_self')">Click here to add
+                    </button>
+                </div>
             </div>
         </div>
-        <div class="card mb-4 box-shadow">
-            <div class="card-header">
-                <h4 class="my-0 font-weight-normal">Search by date</h4>
+        <div class="mb-3 text-center col-sm-12 col-lg-4">
+            <div class="card mb-4 box-shadow each-card">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">View the entire data</h4>
+                </div>
+                <div class="card-body text-left">
+                    <h1 class="card-title pricing-card-title">
+                        <small class="text-muted">view the whole data</small>
+                    </h1>
+                    <ul class="list-unstyled mt-3 mb-4">
+                        <li>Temperature</li>
+                        <li>Pressure</li>
+                        <li>Humidity</li>
+                    </ul>
+                </div>
+                <div class="card-footer remove-background remove-boarder-top">
+                    <button type="button" class="btn btn-lg btn-block btn-primary"
+                            onclick="window.open('view_data.html', '_self')">Click here to view data
+                    </button>
+                </div>
             </div>
-            <div class="card-body">
-                <h1 class="card-title pricing-card-title">
-                    <small class="text-muted">view data of a date range</small>
-                </h1>
-                <ul class="list-unstyled mt-3 mb-4">
-                    <li>Temperature</li>
-                    <li>Pressure</li>
-                    <li>Humidity</li>
-                </ul>
-                <button type="button" class="btn btn-lg btn-block btn-primary"
-				onclick="window.open('view-in-range.html', '_self')">click here to search</button>
+        </div>
+        <div class="mb-3 text-center col-sm-12 col-lg-4">
+            <div class="card mb-4 box-shadow each-card">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">Search by date</h4>
+                </div>
+                <div class="card-body text-left">
+                    <h1 class="card-title pricing-card-title">
+                        <small class="text-muted">view data of a date range</small>
+                    </h1>
+                    <ul class="list-unstyled mt-3 mb-4">
+                        <li>Temperature</li>
+                        <li>Pressure</li>
+                        <li>Humidity</li>
+                    </ul>
+                </div>
+                <div class="card-footer remove-background remove-boarder-top">
+                    <button type="button" class="btn btn-lg btn-block btn-primary relative-bottom"
+                            onclick="window.open('view-in-range.html', '_self')">Click here to search
+                    </button>
+                </div>
             </div>
         </div>
     </div>
