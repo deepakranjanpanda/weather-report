@@ -8,7 +8,7 @@ or die('Error connecting to the database');
 
 $range =$_GET['range'];
 
-$query = SELECT * FROM `weather_data` where date >=( CURDATE() - INTERVAL $range DAY );
+$query = "SELECT * FROM `weather_data` where date >=( CURDATE() - INTERVAL $range DAY )";
 
 $result = mysqli_query($dbc, $query)
 or die('Error querying the data');
