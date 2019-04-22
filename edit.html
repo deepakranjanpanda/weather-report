@@ -37,7 +37,7 @@
             $('#idSelect').change(function () {
                 console.log(this.value);
                 $.ajax({
-                    url: 'backend/getDetailsById.php?id='+this.value,
+                    url: 'backend/getDetailsById.php?id=' + this.value,
                     success: function (result) {
                         var resultJsonArray = JSON.parse(result);
                         var htmlString = '';
@@ -82,38 +82,42 @@
     </nav>
 
     <form id="editForm" action="backend/updateDetails.php" method="post">
-        <div class="form-group">
-            <label for="idSelect">Select row ID</label>
-            <select class="form-control" id="idSelect" name="id">
-                <option>Select</option>
-            </select>
+        <div class="row">
+            <div class="form-group col-sm-12 col-lg-4">
+                <label for="idSelect">Select row ID</label>
+                <select class="form-control" id="idSelect" name="id">
+                    <option>Select</option>
+                </select>
+            </div>
+            <div class="form-group col-sm-12 col-lg-4">
+                <label for="dateField">Date</label>
+                <input type="text" class="form-control" id="dateField" name="date" aria-describedby="dateDetails"
+                       placeholder="Date" disabled/>
+                <small id="dateDetails" class="form-text text-muted">When was this details captured?</small>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="dateField">Date</label>
-            <input type="text" class="form-control" id="dateField" name="date" aria-describedby="dateDetails"
-                   placeholder="Date" disabled/>
-            <small id="dateDetails" class="form-text text-muted">When was this details captured?</small>
+        <div class="row">
+            <div class="form-group col-sm-12 col-lg-4">
+                <label for="temperature">Temperature</label>
+                <input type="text" class="form-control" id="temperature" name="temp"
+                       aria-describedby="temperatureDetails"
+                       placeholder="temperature"/>
+                <small id="temperatureDetails" class="form-text text-muted">Enter in degree Celcius</small>
+            </div>
+            <div class="form-group col-sm-12 col-lg-4">
+                <label for="Humidity">Humidity</label>
+                <input type="text" class="form-control" id="Humidity" name="hum" aria-describedby="HumidityDetails"
+                       placeholder="Humidity"/>
+                <small id="HumidityDetails" class="form-text text-muted">Humidity</small>
+            </div>
+            <div class="form-group col-sm-12 col-sm-6 col-lg-4">
+                <label for="Pressure">Pressure</label>
+                <input type="text" class="form-control" id="Pressure" name="pres" aria-describedby="PressureDetails"
+                       placeholder="Pressure"/>
+                <small id="PressureDetails" class="form-text text-muted">In Pascals</small>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="temperature">Temperature</label>
-            <input type="text" class="form-control" id="temperature" name = "temp" aria-describedby="temperatureDetails"
-                   placeholder="temperature"/>
-            <small id="temperatureDetails" class="form-text text-muted">Enter in degree Celcius</small>
-        </div>
-        <div class="form-group">
-            <label for="Humidity">Humidity</label>
-            <input type="text" class="form-control" id="Humidity" name = "hum" aria-describedby="HumidityDetails"
-                   placeholder="Humidity"/>
-            <small id="HumidityDetails" class="form-text text-muted">Humidity</small>
-        </div>
-        <div class="form-group">
-            <label for="Pressure">Pressure</label>
-            <input type="text" class="form-control" id="Pressure" name = "pres" aria-describedby="PressureDetails"
-                   placeholder="Pressure"/>
-            <small id="PressureDetails" class="form-text text-muted">In Pascals</small>
-        </div>
-
-        <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
 </body>
