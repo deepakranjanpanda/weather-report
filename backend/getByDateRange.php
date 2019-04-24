@@ -4,9 +4,10 @@ include 'connection_details.php';
 $dbc = mysqli_connect($MyHostname, $MyUsername, $MyPassword, $MyDatabaseName)
 or die('Error connecting to the database');
 
-$range =$_GET['range'];
+$startDate =$_GET['start_date'];
+$endDate = $_GET['end_date'];
 
-$query = "SELECT * FROM `weather_data` where date >=( CURDATE() - INTERVAL $range DAY )";
+$query = "SELECT * FROM `weather_data` where date BETWEEN '$startDate' and '$endDate'";
 
 $result = mysqli_query($dbc, $query)
 or die('Error querying the data');
