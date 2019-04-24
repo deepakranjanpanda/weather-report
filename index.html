@@ -9,6 +9,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <style>
         .each-card {
             height: 100%;
@@ -19,9 +20,55 @@
         }
 
         .remove-boarder-top {
-            border-top : none;
+            border-top: none;
         }
     </style>
+    <script>
+        $(document).ready(function () {
+            function resetStatus() {
+                $.ajax({
+                    url: 'backend/getActuatorStatus.php',
+                    success: function (result) {
+                        var resultJson = JSON.parse(result);
+                        console.log(resultJson);
+                        if (resultJson.status == "1") {
+                            $('#start').hide();
+                            $('#stop').show();
+                        } else if (resultJson.status == "0") {
+                            $('#start').show();
+                            $('#stop').hide();
+                        }
+                    },
+                    failure: function () {
+                        console.log("failed");
+                    }
+                });
+            }
+
+            function setStatus(status) {
+                $.ajax({
+                    url: 'backend/updateActuatorStatus.php?status=' + status,
+                    success: function (result) {
+                        console.log("Saved");
+                        resetStatus();
+                    },
+                    failure: function () {
+                        console.log("failed");
+                    }
+                })
+            }
+
+            resetStatus();
+
+            $('#stop').click(function () {
+                setStatus(0);
+            });
+
+            $('#start').click(function () {
+                setStatus(1);
+            });
+        });
+    </script>
 </head>
 <body>
 <div class="container">
@@ -54,6 +101,16 @@
         <p class="lead">
             <a class="btn btn-primary btn-lg" href="architecture.html" role="button">View last sensor data</a>
         </p>
+        <div class="row">
+            <button id="stop" type="button" class="btn btn-default" aria-label="Left Align">
+                <span class="fa fa-stop" aria-hidden="true"></span>
+            </button>
+
+            <button id="start" type="button" class="btn btn-default" aria-label="Left Align">
+                <span class="fa fa-play" aria-hidden="true"></span>
+            </button>
+            <p>Actuator</p>
+        </div>
     </div>
 
     <div class="row all-cards">
